@@ -10,6 +10,7 @@ namespace CadastroFuncionarios.Models
         public int Id { get; set; }
         public string  name { get; set; }
 
+
         public Department(int id, string name)
         {
             Id = id;
