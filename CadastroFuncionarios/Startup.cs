@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using CadastroFuncionarios.Models;
 
 namespace CadastroFuncionarios
 {
@@ -33,6 +35,10 @@ namespace CadastroFuncionarios
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<CadastroFuncionariosContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("CadastroFuncionariosContext"),builder=>
+                    builder.MigrationsAssembly("CadastroFuncionarios")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
